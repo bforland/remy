@@ -7,6 +7,8 @@ import datetime as dt
 import numpy as np
 from gtts import gTTS
 
+openai.api_key = 'YOUR_API_KEY_HERE'
+
 def chatbot(input, conversation_history=[]):
     conversation_history.append(input)
     input_text = '\n'.join(conversation_history)
