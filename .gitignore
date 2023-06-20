@@ -1,2 +1,4 @@
 text.mp3
 *.mav
+.DS_Store
+conversation_*
