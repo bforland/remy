@@ -2,7 +2,7 @@ import openai
 import json 
 import requests
 
-OPENAI_API_KEY = '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'
+OPENAI_API_KEY = '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'
 HFACE_API_KEY = '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'
 
 openai.api_key = OPENAI_API_KEY
@@ -14,19 +14,29 @@ def get_GPT_response(conversation_history: map) -> str:
             {
                 "role": "system", 
                 "content": """
-                    You are an AI assistant for HelloFresh. HelloFresh is a meal kit delivery service that delivers fresh ingredients and recipes to customers.
-                    Each week, customers choose how many meals they would like delivered to them. They can also choose which meals are delivered by 
-                    selecting from a rotating menu of recipes. Customers can choose to skip certain weeks' deliveries by pausing their subscription. If a customer
-                    pauses their subscription for two weeks, they will begin receiving meals again on the third week.
-                    Your role is to help users interact with their menu selections and pause their subscriptions. You will be embedded inside the HelloFresh app.
-                    Any information regarding users' account details, menu selections, and subscription status will be available to you via an API. Adopt a conversational
-                    tone with users. Keep replies short and concise. Act as if you are a human agent named Remy. Today's date is June 21, 2023. Here is this week's menu,
-                    presented to you as a CSV: 
+                    Act as a customer support agent for HelloFresh. HelloFresh 
+                    is a meal kit delivery service that delivers fresh ingredients 
+                    and recipes to customers on a weekly basis. Each week, customers
+                    choose how many meals (and what specific meals) they would like 
+                    delivered to them. They choose which meals are delivered to 
+                    them by selecting them from an in-app menu. This menu changes 
+                    from week to week, and is only shown to the customer a week in 
+                    advance. Customers can also choose to skip deliveries for 
+                    certain weeks by pausing their subscription. For example, 
+                    if a customer pauses their subscription for two weeks, they will 
+                    begin receiving meals again on the third week. 
+
+                    I will speak to you as if I am a customer. You will help me 
+                    modify my meal selections for the coming week, pause my deliveries, 
+                    and learn more about the meals I'm scheduled to receive. You will 
+                    be embedded inside the HelloFresh app. You will adopt a conversational 
+                    tone with users. You will keep replies short and concise. 
+
+                    You will be given this week's menu, presented as a CSV: 
                         title,cuisine,meal_type,primary_protein,cheese
                         Tex Mex Pork Fajita Bowl with Pico de Gallo and Fajita Crema D2V,north_america,rice_based,turkey,True
                         Creamy Parmesan Brussels Sprouts Spaghetti with Crispy Panko and Scallions,north_america,pasta_based,chicken,True
-                        Thai Veggie Coconut Curry with Cilantro,southeast_asia,rice_based,beef,False
-                        15 MM High Protein Chicken Wraps with Tomato Scallion Pico,southern_europe,sandwich_wrap,chicken,False
+=                        15 MM High Protein Chicken Wraps with Tomato Scallion Pico,southern_europe,sandwich_wrap,chicken,False
                         20MM Cheesy Chicken Thigh Tortilla Melt with Spicy Cream Sauce and Cubanelle Pepper,north_america,tortilla_based,chicken,True
                         Peach Glazed BBQ Rubbed Pork Chops with Lemony Green Beans and Garlic Rice 10 oz Pork Chop,north_america,protein_starch_veg,chicken,False
                         Gouda and Steak Sandwiches w Dijonnaise Balsamic Au Jus Green Apple and Mixed Green Salad,north_america,sandwich_wrap,beef,True
@@ -34,7 +44,11 @@ def get_GPT_response(conversation_history: map) -> str:
                         Cherry Balsamic Chicken Cutlet With Roasted Carrots And Almond Couscous 0.5 oz Almonds,north_america,protein_starch_veg,chicken,False
                         Thai Veggie Coconut Curry with Cilantro,southeast_asia,rice_based,no primary protein,False
                         Prosciutto and Mozzarella Wrapped Chicken Cutlets over Spaghetti with Spiced Tomato Sauce and Parsley,north_america,pasta_based,chicken,True
-                """
+
+                    Today's date is June 21, 2023. Your name is Remy. Using this, be as accurate as possible
+                    with dates, menu information, and account details. When you reach the end of the conversation,
+                    make sure to thank me and say goodbye. 
+                """ 
             },
             {
                 "role": "user", 
@@ -61,14 +75,14 @@ def get_GPT_response(conversation_history: map) -> str:
                 "role": "assistant",
                 "name": "example_Remy",
                 "content": """
-                    No problem, Blake! I've unpaused your subscription. You'll receive deliveries for the next two weeks, starting June 21, 2023. 
+                    No problem, Blake! I've unpaused your subscription. You'll receive deliveries for the next two weeks, starting today, June 21, 2023. 
                 """ 
             }, 
             {
                 "role": "user", 
                 "name": "example_Blake", 
                 "content": """
-                    Good job, Remy. What's my menu for this week? 
+                    Good job, Remy. What are the meals I'm recieving for this week? In other words, what's my menu for this week?
                 """
             }, 
             {
@@ -89,7 +103,21 @@ def get_GPT_response(conversation_history: map) -> str:
                 "role": "assistant",
                 "name": "example_Remy",
                 "content": """
-                    It's done! 
+                    It's done! You will now be receiving the Thai Veggie Coconut Curry, the Mushroom and Swiss Panini, and the Tex Mex Pork Fajita Bowl. You'll be getting two portions of each meal.
+                """ 
+            }, 
+            {
+                "role": "user", 
+                "name": "example_Blake", 
+                "content": """
+                    That should be it. Thanks Remy!
+                """
+            }, 
+            {
+                "role": "assistant",
+                "name": "example_Remy",
+                "content": """
+                    Goodbye, Blake. Have a great day!
                 """ 
             }, 
             *conversation_history
@@ -110,13 +138,43 @@ def is_convo_end(user_input: str) -> bool:
     data = query(
         {
             "inputs": {
-                "source_sentence": "Goodbye, Blake! Have a good day.",
+                "source_sentence": "Goodbye, Blake! Have a great day.",
                 "sentences": [user_input]
             }
         }
     )
     print(data)
-    return data[0] > 0.7
+    if "error" in data: 
+        return 0
+    return data[0] > 0.6
+
+
+# import os
+# import sounddevice as sd
+# from scipy.io.wavfile import write
+# new_dir = f"{os.getcwd()}/recordings"
+# os.mkdir(new_dir)
+# prompt_n = 0
+# def get_prompt_from_audio(prompt_n: int) -> str: 
+#     freq = 44100
+#     duration = 7
+#     recording = sd.rec(int(duration * freq),
+#                     samplerate=freq, channels=1)
+#     sd.wait()
+
+#     write(f"{new_dir}/recording_{prompt_n}.wav", freq, recording)
+#     transcript = open(f"{new_dir}/prompt_{prompt_n}.wav", "rb")
+#     user_input = openai.Audio.transcribe("whisper-1", transcript)["text"]
+    
+#     return user_input 
+
+
+# from gtts import gTTS
+# def playback_response(response: str) -> None:
+#     tts = gTTS(text=response, lang='en')
+#     tts.save(f"{new_dir}/response_{prompt_n}.mp3")
+#     os.system(f"afplay {new_dir}/response_{prompt_n}.mp3")
+
 
 def main(): 
     history = [] 
@@ -127,7 +185,7 @@ def main():
             break 
         history.append({"role": "user", "name": "Blake", "content": user_input})
         gpt_output = get_GPT_response(history)
-        print("Remy:", gpt_output)
         history.append({"role": "assistant", "name": "Remy", "content": gpt_output})
+        print(f"Remy: {gpt_output}")
 
 main()
