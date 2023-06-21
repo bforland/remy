@@ -7,7 +7,7 @@ import datetime as dt
 # import numpy as np
 from gtts import gTTS
 
-openai.api_key = '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'
+openai.api_key = 'YOUR_OPENAI_API_KEY_HERE'
 
 def status_check():
     

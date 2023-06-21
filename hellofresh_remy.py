@@ -49,7 +49,7 @@ epoch_time = dt.datetime(2023, 1, 1)
 delta = int((current_time - epoch_time).total_seconds())
 
 prompt_n = 0
-new_dir = f"/Users/blake.forland/HF/hackathon/remy/conversation_{delta}"
+new_dir = f"/Users/blake.forland/HF/hackathon/remy/conversations/{delta}"
 os.mkdir(new_dir)
 
 while True:
