@@ -1,0 +1,61 @@
+title,cuisine,meal_type,primary_protein,cheese
+[SWAP GROUND PORK TO GROUND TURKEY] Tex Mex Pork Fajita Bowl with Pico de Gallo and Fajita Crema D2V,north_america,rice_based,turkey,True
+[ADD CHICKEN CUTLETS TO VEGGIE] Creamy Parmesan Brussels Sprouts Spaghetti with Crispy Panko and Scallions,north_america,pasta_based,chicken,True
+[ADD GROUND BEEF TO VEGGIE] Thai Veggie Coconut Curry with Cilantro,southeast_asia,rice_based,beef,False
+15 MM High Protein Chicken Wraps with Tomato Scallion Pico,southern_europe,sandwich_wrap,chicken,False
+20MM Cheesy Chicken Thigh Tortilla Melt with Spicy Cream Sauce and Cubanelle Pepper,north_america,tortilla_based,chicken,True
+[SWAP PORK CHOPS TO CHICKEN CUTLETS] Peach Glazed BBQ Rubbed Pork Chops with Lemony Green Beans and Garlic Rice 10 oz Pork Chop,north_america,protein_starch_veg,chicken,False
+Gouda and Steak Sandwiches w Dijonnaise Balsamic Au Jus Green Apple and Mixed Green Salad,north_america,sandwich_wrap,beef,True
+Mushroom and Swiss Panini with Garlic Russet Potato Wedges,north_america,sandwich_wrap,no primary protein,True
+Cherry Balsamic Chicken Cutlet With Roasted Carrots And Almond Couscous 0.5 oz Almonds,north_america,protein_starch_veg,chicken,False
+Thai Veggie Coconut Curry with Cilantro,southeast_asia,rice_based,no primary protein,False
+Prosciutto and Mozzarella Wrapped Chicken Cutlets over Spaghetti with Spiced Tomato Sauce and Parsley,north_america,pasta_based,chicken,True
+Sesame Soy Pork Rice Bowl with Thai Chili Mayo and Crispy Onions Jasmine Rice   D2Vv2,southeast_asia,rice_based,pork,False
+Creamy Italian Lemon Herb Pork Chops with Balsamic Glazed Roasted Veggies,north_america,protein_veg,pork,False
+[SWAP PORK CHOPS TO CHICKEN CUTLETS] Creamy Italian Lemon Herb Pork Chops with Balsamic Glazed Roasted Veggies,north_america,protein_veg,chicken,False
+Onion and Monterey Jack Crusted Chicken with Dijon Honey Mustard Mashed Sweet Potatoes and Green Beans New Sour Cream,north_america,protein_starch_veg,chicken,True
+Lemon Chive Butter Scallops with Mashed Potatoes and Roasted Asparagus,north_america,protein_starch_veg,scallops,False
+Spicy Cajun Red Bean Sandwiches with Sliced Pickles and Roasted Russet Potato Wedges,north_america,sandwich_wrap,no primary protein,True
+Brown Sugar Bourbon and Apple Pork Meatloaf with Mashed Potatoes and Lemony Green Beans BBQ Sauce,north_america,protein_starch_veg,pork,False
+Plant Based And Pepper Tostadas PBP 6oz,north_america,tortilla_based,plant-based protein,True
+[SWAP GROUND PORK TO GROUND TURKEY] Sesame Soy Pork Rice Bowl with Thai Chili Mayo and Crispy Onions Jasmine Rice   D2Vv2,southeast_asia,rice_based,turkey,False
+Roma Tomato Ricotta Flatbread with Parsley,southern_europe,flatbread,no primary protein,False
+Falafel Power Bowl with Garlicky Pita,southern_europe,dinner_salad,no primary protein,True
+Egg Shakshuka with Feta Garlicky White Sauce Pickled Onions and Buttery Pita,middle_east,breakfast,eggs,True
+Herb Grilled Steak and Old Bay Spiced Shrimp with Caesar Salad Grilled Garlic Bread and Old Bay Parsley Butter,north_america,protein_starch_veg,steak,True
+Italian Sausage Pepper and Onion Sub with Mozzarella and Garlic Russet Potato Wedges,southern_europe,sandwich_wrap,sausage mix,True
+[ADD BACON TO VEGGIE] Spicy Cajun Red Bean Sandwiches with Sliced Pickles and Roasted Russet Potato Wedges,north_america,sandwich_wrap,pork,True
+Curried Cauliflower and Chickpea Bowl,south_asia,rice_based,no primary protein,False
+10 MM Low Cal Lunch Creamy Chickpea Salad Lettuce Wraps,north_america,dinner_salad,no primary protein,False
+Creamy Parmesan Brussels Sprouts Spaghetti with Crispy Panko and Scallions,north_america,pasta_based,no primary protein,True
+20MM Spinach and White Bean Pasta Skillet Bake,southern_europe,pasta_based,no primary protein,True
+Vegan Tex Mex Black Bean and Pepper Wrap with Roja Rice Salsa Fresca and Creamy Cilantro Lime Sauce,north_america,sandwich_wrap,no primary protein,False
+15MM Shawarma Spiced Beef and Golden Raisin Pitas with Pickled Onions and Lemony White Sauce,middle_east,sandwich_wrap,beef,False
+Ancho BBQ Burger with Roasted Potato Wedges,north_america,burger,beef,False
+Steak with Cream Sauce Garlic Herb Potatoes and Mixed Greens and Greek Dressing,north_america,protein_starch_veg,steak,False
+Creamy Dill Chicken Cutlet with Broccoli and Russet Potatoes,southern_europe,protein_starch_veg,chicken,False
+10MM Low Cal Tomato Guac and Fresh Mozzarella Tartines with Simple Arugula Side Salad,southern_europe,sandwich_wrap,no primary protein,True
+[SWAP GROUND PORK TO GROUND BEEF] Tex Mex Pork Fajita Bowl with Pico de Gallo and Fajita Crema D2V,north_america,rice_based,beef,True
+[SWAP PORK TENDERLOIN TO CHICKEN CUTLETS] Roasted Pork with Balsamic Fig Sauce Carrots and Thyme Roasted Russet Potatoes 10oz Pork Tenderloin,north_america,protein_starch_veg,chicken,False
+[UPGRADE PORK TENDERLOIN TO BEEF TENDERLOIN] Roasted Pork with Balsamic Fig Sauce Carrots and Thyme Roasted Russet Potatoes 10oz Pork Tenderloin,north_america,protein_starch_veg,beef,False
+[SIDE CARB SWAP RUSSET POTATOES TO ASPARAGUS] Mushroom and Swiss Panini with Garlic Russet Potato Wedges,north_america,sandwich_wrap,no primary protein,True
+[SIDE CARB SWAP BASMATI RICE TO BROWN RICE] Shawarma Spiced Chickpeas with Pistachio Rice Garlicky White Sauce and Israeli Salad,north_africa,rice_based,no primary protein,False
+Tex Mex Pork Fajita Bowl with Pico de Gallo and Fajita Crema D2V,north_america,rice_based,pork,True
+Roasted Pork with Balsamic Fig Sauce Carrots and Thyme Roasted Russet Potatoes 10oz Pork Tenderloin,north_america,protein_starch_veg,pork,False
+Protein Smart Carb Smart Cheesy Southwest Turkey and Bean Soup with Scallions,central_america,soup_stew,turkey,True
+[SWAP GROUND PORK TO GROUND BEEF 10oz] Sesame Soy Pork Rice Bowl with Thai Chili Mayo and Crispy Onions Jasmine Rice   D2Vv2,southeast_asia,rice_based,beef,False
+Creamy Tuscan Spaghetti and Meatballs,southern_europe,pasta_based,beef,False
+15MM Spicy Pulled Pork Walking Tacos with Guacamole,central_america,tortilla_based,pork,True
+Peach Glazed BBQ Rubbed Pork Chops with Lemony Green Beans and Garlic Rice 10 oz Pork Chop,north_america,protein_starch_veg,pork,False
+[ADD GROUND BEEF TO VEGGIE] Vegan Tex Mex Black Bean and Pepper Wrap with Roja Rice Salsa Fresca and Creamy Cilantro Lime Sauce,north_america,sandwich_wrap,beef,False
+Creamy Vegan Mushroom Stew,north_america,soup_stew,no primary protein,False
+[SWAP GROUND PORK TO GROUND BEEF] Brown Sugar Bourbon and Apple Pork Meatloaf with Mashed Potatoes and Lemony Green Beans BBQ Sauce,north_america,protein_starch_veg,beef,False
+[ADD GROUND TURKEY TO VEGGIE] Thai Veggie Coconut Curry with Cilantro,southeast_asia,rice_based,turkey,False
+[SIDE CARB SWAP RUSSET POTATOES TO ASPARAGUS] Ancho BBQ Burger with Roasted Potato Wedges,north_america,burger,beef,False
+Shrimp Fajitas with Guacamole Cubanelle Pepper and Smokey Red Pepper Crema,north_america,tortilla_based,shrimp,False
+Mozzarella Crusted Chicken Cutlets With Bruschetta Topping Bacon Mashed Russet Potatoes And Lemony Broccoli,north_america,protein_starch_veg,chicken,True
+Shawarma Spiced Chickpeas with Pistachio Rice Garlicky White Sauce and Israeli Salad,north_africa,rice_based,no primary protein,False
+Onion Crunch Salmon Over Cheesy Lemony Spaghetti,north_america,pasta_based,salmon,True
+[UPGRADE VEGGIE TO SALMON] Creamy Parmesan Brussels Sprouts Spaghetti with Crispy Panko and Scallions,north_america,pasta_based,salmon,True
+[SIDE CARB SWAP JASMINE RICE TO BROWN RICE] Curried Cauliflower and Chickpea Bowl,south_asia,rice_based,no primary protein,False
+[ADD CHICKEN CUTLETS TO VEGGIE] 20MM Spinach and White Bean Pasta Skillet Bake,southern_europe,pasta_based,chicken,True

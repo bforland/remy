@@ -6,7 +6,7 @@ import numpy as np
 
 import openai
 import time
-menu=pd.read_csv('sample_upcoming_data.csv')
+menu=pd.read_csv('./data/sample_upcoming_data.csv')
 menu['title_split']=menu['title'].\
     apply(lambda s:s.replace('[','/').replace(']','/').split('/'))
 menu['title_len']=menu['title_split'].apply(len)
@@ -80,7 +80,7 @@ u_input=['Hello there, could you help me with hellofresh menu?',
     
 b_output=[]
 for i in range(len(u_input)):
-    time.sleep(30)
+    time.sleep(10)
     
     user_input=u_input[i]
     print("\nUser:", user_input)
