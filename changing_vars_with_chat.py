@@ -7,9 +7,20 @@ import datetime as dt
 # import numpy as np
 from gtts import gTTS
 
-openai.api_key = 'YOUR_OPENAI_API_KEY_HERE'
+openai.api_key = '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'
 
-customer_status = 'Active'
+def status_check():
+    
+    customer_status = chatbot([{"role": "user", "content": "What is my subscription status right now ?"}])
+    
+    if "paused" in customer_status.lower():
+        customer_status = "Paused"
+    elif "active" in customer_status.lower():
+        customer_status = "Active"
+    else:
+        customer_status = "Unknown"
+    
+    return customer_status
 
 def chatbot(conversation_history):
     response = openai.ChatCompletion.create(
@@ -24,7 +35,11 @@ def chatbot(conversation_history):
             You are able to help customers pause their subscriptions for a specified number of weeks.
             When the conversation ends say "have a great day".
             It is important to establish if the customer wants to continue receiving a delivery after the pause period.
-            The customer is currently {customer_status}.
+            You can change the global variable customer_status and should change it baeed on the conversation.
+            Just customer "Subscription Status" is "Active" for the next 5 weeks.
+            Customers can ask for it to be "Paused". Change to "Paused" if requested based on the conversation.
+            Change all number works to digits. Never ask the customer for to cancel.
+            Assume the customer wants to continue receiving a delivery after the pause period.
             """},
             *conversation_history
         ],
@@ -32,50 +47,22 @@ def chatbot(conversation_history):
     )
     return response['choices'][0]['message']['content']
 
-def record_audio(file_name):
-    print("Hellofresh is listening...")
-    freq = 44100
-    duration = 7
-    recording = sd.rec(int(duration * freq),
-                    samplerate=freq, channels=1)
-    sd.wait()
-    
-    write(file_name, freq, recording)
-
 history = []
 
-current_time = dt.datetime.now()
-epoch_time = dt.datetime(2023, 1, 1)
-delta = int((current_time - epoch_time).total_seconds())
-
-prompt_n = 0
-new_dir = f"/Users/blake.forland/HF/hackathon/remy/conversation_{delta}"
-os.mkdir(new_dir)
-
 while True:
-    record_audio(f"{new_dir}/recording_{prompt_n}.wav")
-    transcript = open(f"{new_dir}/recording_{prompt_n}.wav", 'rb')
-    user_input = openai.Audio.transcribe("whisper-1", transcript)["text"]
-    if user_input == "":
-        break
+    user_input = input("User: ")
+    
     if ("Goodbye").lower() in user_input.lower():
-        speech = gTTS(text = "Happy to help !", lang = 'en')
-        speech.save(f"happy_to_help.mp3")
-        os.system("afplay happy_to_help.mp3")
         break
-    print("User:", user_input)
+    
     history.append({"role": "user", "content": user_input})
 
     bot_output = chatbot(history)
     print("Bot:", bot_output)
     #text_to_speech(bot_output)
     #os.system(f"say {bot_output}")
-    speech = gTTS(text=bot_output, lang="en")
-    speech.save(f"{new_dir}/chat_response_{prompt_n}.mp3")
-    os.system(f"afplay {new_dir}/chat_response_{prompt_n}.mp3")
-
     history.append({"role": "assistant", "content": bot_output})
-    prompt_n = prompt_n + 1
-    print(customer_status)
-    if "have a great day" in bot_output:
-        break
+
+history.append({"role": "user", "content": "WHat is the integer number of weeks I'm paused for, only the number please ?"})
+num_weeks = int(chatbot(history).lower().split('weeks')[0].split(' ')[-2])
+print(num_weeks)
