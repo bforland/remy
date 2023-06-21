@@ -16,7 +16,7 @@ menu['title_len']=menu['title_split'].apply(len)
 # menu=menu.drop(['title_split','title_len'],axis=1)
 # menu=menu.iloc[:10]
 
-openai.api_key = 'YOUR_OPENAI_API_KEY_HERE'
+openai.api_key = 'YOUR-KEY-HERE'
 
 def chatbot(conversation_history):
     

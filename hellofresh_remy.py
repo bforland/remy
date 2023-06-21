@@ -7,7 +7,7 @@ import datetime as dt
 # import numpy as np
 from gtts import gTTS
 
-openai.api_key = 'YOUR_OPENAI_API_KEY_HERE'
+openai.api_key = 'YOUR-KEY-HERE'
 
 customer_status = 'Active'
 
@@ -24,11 +24,16 @@ def chatbot(conversation_history):
             You are able to help customers pause their subscriptions for a specified number of weeks.
             When the conversation ends say "have a great day".
             It is important to establish if the customer wants to continue receiving a delivery after the pause period.
-            The customer is currently {customer_status}.
+            You can change the global variable customer_status and should change it baeed on the conversation.
+            Just customer "Subscription Status" is "Active" for the next week, two weeks, and three weeks away.
+            You should change and track the status of those three weeks inddividually.
+            Customers can ask for it to be "Paused". Change to "Paused" if requested based on the conversation.
+            Change all number works to digits. Never ask the customer for to cancel.
+            Assume the customer wants to continue receiving a delivery after the pause period.
             """},
             *conversation_history
         ],
-      temperature= 0,
+      temperature= 0.2,
     )
     return response['choices'][0]['message']['content']
 
