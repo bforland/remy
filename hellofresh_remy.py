@@ -1,30 +1,29 @@
 import openai
 import sounddevice as sd
 from scipy.io.wavfile import write
-import wavio as wv
+# import wavio as wv
 import os
 import datetime as dt
-import numpy as np
+# import numpy as np
 from gtts import gTTS
 
 openai.api_key = 'YOUR_API_KEY_HERE'
 
-def chatbot(input, conversation_history=[]):
-    conversation_history.append(input)
-    input_text = '\n'.join(conversation_history)
-    
+def chatbot(conversation_history):
     response = openai.ChatCompletion.create(
       model="gpt-3.5-turbo",
       messages=[
-            {"role": "system", "content": "You're incredibly personable.\
-                You are an AI assistant for HelloFresh that will help customers interacting with the menu.\
-                Don't ask for the customers email and account information.\
-                    Keep replies short and concise.\
-                    Refer to yourself in the fitst person.\
-                    You are able to help customers pause their subscriptions for a specified number of weeks.\
-                        When the coversation ends say havea great day.\
-                            It is important to establish if the customer wants to contrinue receiveing a delivery after the pause period."},
-            {"role": "user", "content": input_text}
+            {"role": "system", "content": """
+            You're incredibly personable.
+            You are an AI assistant for HelloFresh that will help customers interacting with the menu.
+            Don't ask for the customers email and account information.
+            Keep replies short and concise.
+            Refer to yourself in the first person.
+            You are able to help customers pause their subscriptions for a specified number of weeks.
+            When the conversation ends say "have a great day".
+            It is important to establish if the customer wants to continue receiving a delivery after the pause period.
+            """},
+            *conversation_history
         ]
     )
     return response['choices'][0]['message']['content']
@@ -60,18 +59,19 @@ while True:
         speech.save(f"happy_to_help.mp3")
         os.system("afplay happy_to_help.mp3")
         break
-    print(f"User: {user_input}")
+    print("User:", user_input)
     # Start recorder with the given values
-    bot_output = chatbot(user_input, history)
-    print(bot_output)
+    history.append({"role": "user", "content": user_input})
+
+    bot_output = chatbot(history)
+    print("Bot:", bot_output)
     #text_to_speech(bot_output)
     #os.system(f"say {bot_output}")
-    speech = gTTS(text = bot_output, lang = 'en')
+    speech = gTTS(text=bot_output, lang="en")
     speech.save(f"{new_dir}/chat_response_{prompt_n}.mp3")
-    os.system(f"afplay {new_dir}text.mp3")
-    
-    history.append(f"User: {user_input}")
-    history.append(f"Bot: {bot_output}")
+    os.system(f"afplay {new_dir}/chat_response_{prompt_n}.mp3")
+
+    history.append({"role": "assistant", "content": bot_output})
     prompt_n = prompt_n + 1
     if "have a great day" in bot_output:
         break
