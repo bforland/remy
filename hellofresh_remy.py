@@ -7,13 +7,15 @@ import datetime as dt
 # import numpy as np
 from gtts import gTTS
 
-openai.api_key = 'YOUR_API_KEY_HERE'
+openai.api_key = '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'
+
+customer_status = 'Active'
 
 def chatbot(conversation_history):
     response = openai.ChatCompletion.create(
       model="gpt-3.5-turbo",
       messages=[
-            {"role": "system", "content": """
+            {"role": "assistant", "content": f"""
             You're incredibly personable.
             You are an AI assistant for HelloFresh that will help customers interacting with the menu.
             Don't ask for the customers email and account information.
@@ -22,9 +24,11 @@ def chatbot(conversation_history):
             You are able to help customers pause their subscriptions for a specified number of weeks.
             When the conversation ends say "have a great day".
             It is important to establish if the customer wants to continue receiving a delivery after the pause period.
+            The customer is currently {customer_status}.
             """},
             *conversation_history
-        ]
+        ],
+      temperature= 0,
     )
     return response['choices'][0]['message']['content']
 
@@ -60,7 +64,6 @@ while True:
         os.system("afplay happy_to_help.mp3")
         break
     print("User:", user_input)
-    # Start recorder with the given values
     history.append({"role": "user", "content": user_input})
 
     bot_output = chatbot(history)
@@ -73,5 +76,6 @@ while True:
 
     history.append({"role": "assistant", "content": bot_output})
     prompt_n = prompt_n + 1
+    print(customer_status)
     if "have a great day" in bot_output:
         break
