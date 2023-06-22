@@ -5,8 +5,8 @@ import datetime as dt
 from gtts import gTTS
 import time
 
-OPENAI_API_KEY = "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"
-HFACE_API_KEY = "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"
+OPENAI_API_KEY = "YOUR-KEY-HERE"
+HFACE_API_KEY = "YOUR-KEY-HERE"
 
 openai.api_key = OPENAI_API_KEY
 
