@@ -89,7 +89,7 @@ def get_GPT_response(conversation_history: map) -> str:
             },
             {
                 "role": "user",
-                "name": "example_Blake",
+                "name": "example_User",
                 "content": """
                     Hi Remy, I would like to pause my subscription for two weeks.
                 """,
@@ -98,12 +98,12 @@ def get_GPT_response(conversation_history: map) -> str:
                 "role": "assistant",
                 "name": "example_Remy",
                 "content": """ 
-                    Sure, Blake! I've paused your subscription for the next two weeks. It's set to re-start on July 11, 2023. Is there anything else I can help you with? 
+                    Sure, User! I've paused your subscription for the next two weeks. It's set to re-start on July 11, 2023. Is there anything else I can help you with? 
                 """,
             },
             {
                 "role": "user",
-                "name": "example_Blake",
+                "name": "example_User",
                 "content": """
                     Thanks, Remy. Great job. Actually, I changed my mind. I'd like to receive deliveries for this week and the next. 
                 """,
@@ -112,12 +112,12 @@ def get_GPT_response(conversation_history: map) -> str:
                 "role": "assistant",
                 "name": "example_Remy",
                 "content": """
-                    No problem, Blake! I've unpaused your subscription. You'll receive deliveries for the next two weeks, starting June 21, 2023. 
+                    No problem, User! I've unpaused your subscription. You'll receive deliveries for the next two weeks, starting June 21, 2023. 
                 """,
             },
             {
                 "role": "user",
-                "name": "example_Blake",
+                "name": "example_User",
                 "content": """
                     Good job, Remy. What's my menu for this week? 
                 """,
@@ -131,7 +131,7 @@ def get_GPT_response(conversation_history: map) -> str:
             # },
             {
                 "role": "user",
-                "name": "example_Blake",
+                "name": "example_User",
                 "content": """
                     Yum! You're doing well, Remy. I don't like Brussels Sprouts, though. Can I swap that out for the Tex Mex Pork Fajita Bowl? 
                 """,
@@ -145,7 +145,7 @@ def get_GPT_response(conversation_history: map) -> str:
             },
             {
                 "role": "user",
-                "name": "example_Blake",
+                "name": "example_User",
                 "content": """
                     Great job, Remy. I think that's it.
                 """,
@@ -154,7 +154,7 @@ def get_GPT_response(conversation_history: map) -> str:
                 "role": "assistant",
                 "name": "example_Remy",
                 "content": """
-                    Goodbye, Blake! Have a great day.
+                    Goodbye, User! Have a great day.
                 """,
             },
             *conversation_history,
@@ -175,7 +175,7 @@ def is_convo_end(user_input: str) -> bool:
     data = query(
         {
             "inputs": {
-                "source_sentence": "Goodbye, Blake! Have a great day.",
+                "source_sentence": "Goodbye, User! Have a great day.",
                 "sentences": [user_input],
             }
         }
