@@ -1,21 +1,26 @@
 import openai
 import sounddevice as sd
 from scipy.io.wavfile import write
+
 # import wavio as wv
 import os
 import datetime as dt
+
 # import numpy as np
 from gtts import gTTS
 
-openai.api_key = 'YOUR-KEY-HERE'
+openai.api_key = "YOUR-KEY-HERE"
 
-customer_status = 'Active'
+customer_status = "Active"
+
 
 def chatbot(conversation_history):
     response = openai.ChatCompletion.create(
-      model="gpt-3.5-turbo",
-      messages=[
-            {"role": "assistant", "content": f"""
+        model="gpt-3.5-turbo",
+        messages=[
+            {
+                "role": "assistant",
+                "content": f"""
             You're incredibly personable.
             You are an AI assistant for HelloFresh that will help customers interacting with the menu.
             Don't ask for the customers email and account information.
@@ -30,22 +35,24 @@ def chatbot(conversation_history):
             Customers can ask for it to be "Paused". Change to "Paused" if requested based on the conversation.
             Change all number works to digits. Never ask the customer for to cancel.
             Assume the customer wants to continue receiving a delivery after the pause period.
-            """},
-            *conversation_history
+            """,
+            },
+            *conversation_history,
         ],
-      temperature= 0.2,
+        temperature=0.2,
     )
-    return response['choices'][0]['message']['content']
+    return response["choices"][0]["message"]["content"]
+
 
 def record_audio(file_name):
     print("Hellofresh is listening...")
     freq = 44100
     duration = 7
-    recording = sd.rec(int(duration * freq),
-                    samplerate=freq, channels=1)
+    recording = sd.rec(int(duration * freq), samplerate=freq, channels=1)
     sd.wait()
-    
+
     write(file_name, freq, recording)
+
 
 history = []
 
@@ -59,12 +66,12 @@ os.mkdir(new_dir)
 
 while True:
     record_audio(f"{new_dir}/recording_{prompt_n}.wav")
-    transcript = open(f"{new_dir}/recording_{prompt_n}.wav", 'rb')
+    transcript = open(f"{new_dir}/recording_{prompt_n}.wav", "rb")
     user_input = openai.Audio.transcribe("whisper-1", transcript)["text"]
     if user_input == "":
         break
     if ("Goodbye").lower() in user_input.lower():
-        speech = gTTS(text = "Happy to help !", lang = 'en')
+        speech = gTTS(text="Happy to help !", lang="en")
         speech.save(f"happy_to_help.mp3")
         os.system("afplay happy_to_help.mp3")
         break
@@ -73,8 +80,8 @@ while True:
 
     bot_output = chatbot(history)
     print("Bot:", bot_output)
-    #text_to_speech(bot_output)
-    #os.system(f"say {bot_output}")
+    # text_to_speech(bot_output)
+    # os.system(f"say {bot_output}")
     speech = gTTS(text=bot_output, lang="en")
     speech.save(f"{new_dir}/chat_response_{prompt_n}.mp3")
     os.system(f"afplay {new_dir}/chat_response_{prompt_n}.mp3")
